@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            background-image: url(https://images2.minutemediacdn.com/image/upload/c_fill,w_1440,ar_16:9,f_auto,q_auto,g_auto/shape/cover/sport/140069999-ae261a4adb33a946ac93c8404e1bee3f.jpg);
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #converter {
+            background-image: url(https://cache.careers360.mobi/media/article_images/2023/1/13/summer-season.webp);
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #455a64;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"], select {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color:#ff7043;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            font-weight: bold;
+            font-size: 18px;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <div id="converter">
+        <h2>Temperature Converter</h2>
+        <label for="tempInput">Enter Temperature:</label>
+        <input type="text" id="tempInput">
+        <select id="unitInput">
+            <option value="celsius">Celsius</option>
+            <option value="fahrenheit">Fahrenheit</option>
+        </select>
+        <br>
+        <button onclick="convertTemperature()">Convert</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function convertTemperature() {
+            const tempInput = parseFloat(document.getElementById("tempInput").value);
+            const unitInput = document.getElementById("unitInput").value;
+            let result;
+
+            if (unitInput === "celsius") {
+                // Convert Celsius to Fahrenheit
+                result = (tempInput * 9/5) + 32;
+                document.getElementById("result").innerHTML = `${tempInput} Celsius = ${result.toFixed(2)} Fahrenheit`;
+            } else if (unitInput === "fahrenheit") {
+                // Convert Fahrenheit to Celsius
+                result = (tempInput - 32) * 5/9;
+                document.getElementById("result").innerHTML = `${tempInput} Fahrenheit = ${result.toFixed(2)} Celsius`;
+            } else {
+                document.getElementById("result").innerHTML = "Invalid input";
+            }
+        }
+    </script>
+</body>
+</html>

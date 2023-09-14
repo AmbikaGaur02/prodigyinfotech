@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Solver</title>
+    <style>
+        body {
+            background-image: url(https://cdn3.vectorstock.com/i/1000x1000/32/67/blue-colour-bokeh-vector-3673267.jpg);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            
+            align-items: center;
+            height: 100vh;
+        }
+
+        .sudoku-container {
+            margin: 20px auto;
+            width: 400px;
+        }
+
+        .sudoku-grid {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            gap: 2px;
+        }
+
+        .sudoku-cell {
+            background-color: rgb(57, 190, 231);
+            border-radius: 3px;
+            box-shadow: 0px 0px 20px#03A9F4;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 24px;
+            border: 1px solid #ccc;
+        }
+
+        button#solve-button {
+           font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+          font-style: oblique;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #0074cc;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        button#solve-button:hover {
+            background-color:red;
+             box-shadow: 0px 0px 20px#03A9F4;
+             border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sudoku-container">
+        <div class="sudoku-grid" id="sudoku-grid">
+            <!-- Sudoku cells will be generated here -->
+        </div>
+        <button id="solve-button">Solve Sudoku</button>
+    </div>
+    <script>
+        // Sample Sudoku puzzle (0 represents an empty cell)
+        const initialGrid = [
+            [5, 3, 0, 0, 7, 0, 0, 0, 0],
+            [6, 0, 0, 1, 9, 5, 0, 0, 0],
+            [0, 9, 8, 0, 0, 0, 0, 6, 0],
+            [8, 0, 0, 0, 6, 0, 0, 0, 3],
+            [4, 0, 0, 8, 0, 3, 0, 0, 1],
+            [7, 0, 0, 0, 2, 0, 0, 0, 6],
+            [0, 6, 0, 0, 0, 0, 2, 8, 0],
+            [0, 0, 0, 4, 1, 9, 0, 0, 5],
+            [0, 0, 0, 0, 8, 0, 0, 7, 9]
+        ];
+
+        function createSudokuGrid(grid) {
+            const sudokuGrid = document.getElementById("sudoku-grid");
+            for (let i = 0; i < 9; i++) {
+                for (let j = 0; j < 9; j++) {
+                    const cell = document.createElement("div");
+                    cell.classList.add("sudoku-cell");
+                    cell.textContent = grid[i][j] === 0 ? "" : grid[i][j];
+                    sudokuGrid.appendChild(cell);
+                }
+            }
+        }
+
+        function solveSudoku(grid) {
+            // Sudoku solving algorithm goes here (you need to implement this)
+        }
+
+        document.getElementById("solve-button").addEventListener("click", () => {
+            const sudokuGrid = document.getElementById("sudoku-grid");
+            sudokuGrid.innerHTML = ""; // Clear the existing grid
+
+            createSudokuGrid(initialGrid);
+            solveSudoku(initialGrid); // Call your Sudoku solving function here
+        });
+    </script>
+</body>
+</html>

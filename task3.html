@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-image: url(https://www-cms.pipedriveassets.com/cdn-cgi/image/quality=70,format=auto/https://www-cms.pipedriveassets.com/Cold-calling-script-templates.png);
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            
+            align-items: center;
+            height: 100vh;
+            
+        }
+        
+
+        .container {
+            background-image: url(https://img.freepik.com/free-vector/blank-blue-halftone-background_53876-99003.jpg);
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #b2ebf2;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .contact-form {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .contact-list {
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+
+        .contact {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .contact button {
+            background-color: #ff3333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact button:hover {
+            background-color: #cc0000;
+        }
+    </style>
+    <title>Contact Management System</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact Management System</h1>
+        <div class="contact-form">
+            <input type="text" id="name" placeholder="Name">
+            <input type="text" id="email" placeholder="Email">
+            <button onclick="addContact()">Add Contact</button>
+        </div>
+        <div class="contact-list" id="contactList">
+            <!-- Contacts will be displayed here -->
+        </div>
+    </div>
+    <script>
+        const contactList = document.getElementById("contactList");
+
+        function addContact() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+
+            if (name.trim() === "" || email.trim() === "") {
+                alert("Please enter both name and email.");
+                return;
+            }
+
+            const contact = document.createElement("div");
+            contact.className = "contact";
+            contact.innerHTML = `
+                <span>${name}</span>
+                <span>${email}</span>
+                <button onclick="deleteContact(this)">Delete</button>
+            `;
+
+            contactList.appendChild(contact);
+
+            // Clear input fields
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+        }
+
+        function deleteContact(button) {
+            const contact = button.parentNode;
+            contactList.removeChild(contact);
+        }
+    </script>
+</body>
+</html>
